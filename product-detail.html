@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | TechPulse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-cpu"></i> TechPulse
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                Categories
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="products.html?category=smartphones">Smartphones</a></li>
+                <li><a class="dropdown-item" href="products.html?category=laptops">Laptops</a></li>
+                <li><a class="dropdown-item" href="products.html?category=tablets">Tablets</a></li>
+                <li><a class="dropdown-item" href="products.html?category=audio">Audio</a></li>
+                <li><a class="dropdown-item" href="products.html?category=wearables">Wearables</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="products.html">All Products</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center">
+            <div class="search-container me-3">
+              <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+              <button class="search-button">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <div class="theme-toggle me-3" id="themeToggle">
+              <i class="bi bi-moon-fill"></i>
+            </div>
+            <a href="wishlist.html" class="nav-icon me-3" title="Wishlist">
+              <i class="bi bi-heart"></i>
+              <span id="wishlistCount" class="count-badge">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon me-3" title="Cart">
+              <i class="bi bi-cart3"></i>
+              <span id="cartCount" class="count-badge">0</span>
+            </a>
+            <div class="user-menu">
+              <a href="#" id="userIcon" class="nav-icon" title="Account">
+                <i class="bi bi-person-circle"></i>
+              </a>
+              <div class="user-dropdown" id="userDropdown">
+                <div id="userAuthenticated" style="display: none;">
+                  <div class="user-info mb-2">
+                    <span id="userDisplayName">User</span>
+                  </div>
+                  <a href="account.html" class="dropdown-item">
+                    <i class="bi bi-person"></i> My Account
+                  </a>
+                  <a href="orders.html" class="dropdown-item">
+                    <i class="bi bi-box"></i> My Orders
+                  </a>
+                  <a href="#" id="logoutButton" class="dropdown-item">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                  </a>
+                </div>
+                <div id="userUnauthenticated">
+                  <a href="login.html" class="dropdown-item">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                  </a>
+                  <a href="signup.html" class="dropdown-item">
+                    <i class="bi bi-person-plus"></i> Sign Up
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <section class="page-title py-5">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="products.html">Products</a></li>
+          <li class="breadcrumb-item"><a id="categoryLink" href="#">Category</a></li>
+          <li class="breadcrumb-item active" aria-current="page" id="productBreadcrumb">Product</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Product Detail -->
+  <section class="product-detail py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Product Images -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="product-images">
+            <div class="main-image mb-3">
+              <img id="mainProductImage" src="" alt="Product" class="img-fluid main-product-image">
+              <span class="discount-tag" id="discountTag">-20%</span>
+            </div>
+            <div class="thumbnail-images row g-2" id="thumbnailContainer">
+              <!-- Thumbnails will be added dynamically -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product Info -->
+        <div class="col-lg-6">
+          <div class="product-info">
+            <h1 id="productTitle" class="mb-2">Product Title</h1>
+            
+            <div class="product-meta d-flex align-items-center mb-3">
+              <div id="productRating" class="product-rating me-4">
+                <!-- Rating stars will be added dynamically -->
+              </div>
+              <span id="reviewCount" class="text-muted me-4">0 reviews</span>
+              <span id="productSku" class="sku text-muted">SKU: ABC123</span>
+            </div>
+            
+            <div id="priceContainer" class="price-container mb-4">
+              <!-- Price will be added dynamically -->
+            </div>
+            
+            <div id="availabilityContainer" class="availability-container mb-4">
+              <!-- Availability will be added dynamically -->
+            </div>
+            
+            <div id="productDescription" class="product-description mb-4">
+              <!-- Description will be added dynamically -->
+            </div>
+            
+            <div class="product-variants mb-4">
+              <h5 class="mb-3">Select Variant:</h5>
+              <div class="variants-container" id="variantsContainer">
+                <!-- Variants will be added dynamically -->
+              </div>
+            </div>
+            
+            <div class="quantity-selector d-flex align-items-center mb-4">
+              <label for="productQuantity" class="me-3">Quantity:</label>
+              <div class="input-group" style="width: 130px;">
+                <button class="btn btn-outline-secondary quantity-btn" type="button" id="decreaseQuantity">-</button>
+                <input type="number" id="productQuantity" class="form-control text-center" value="1" min="1">
+                <button class="btn btn-outline-secondary quantity-btn" type="button" id="increaseQuantity">+</button>
+              </div>
+              <span id="stockCount" class="ms-3 text-muted">20 in stock</span>
+            </div>
+            
+            <div class="product-actions d-flex flex-wrap gap-2 mb-4">
+              <button id="addToCartBtn" class="btn btn-primary">
+                <i class="bi bi-cart-plus"></i> Add to Cart
+              </button>
+              <button id="buyNowBtn" class="btn btn-success">
+                <i class="bi bi-lightning"></i> Buy Now
+              </button>
+              <button id="addToWishlistBtn" class="btn btn-outline-secondary">
+                <i class="bi bi-heart"></i> Add to Wishlist
+              </button>
+              <button id="compareBtn" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left-right"></i> Compare
+              </button>
+            </div>
+            
+            <div class="product-share d-flex align-items-center">
+              <span class="me-3">Share:</span>
+              <div class="social-share">
+                <a href="#" class="share-icon"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="share-icon"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="share-icon"><i class="bi bi-pinterest"></i></a>
+                <a href="#" class="share-icon"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="share-icon"><i class="bi bi-link-45deg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Details Tabs -->
+  <section class="product-tabs py-5 bg-light">
+    <div class="container">
+      <ul class="nav nav-tabs" id="productTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button" role="tab" aria-controls="specs" aria-selected="true">Specifications</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab" aria-controls="features" aria-selected="false">Features</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Shipping & Returns</button>
+        </li>
+      </ul>
+      <div class="tab-content p-4 bg-white" id="productTabsContent">
+        <div class="tab-pane fade show active" id="specs" role="tabpanel" aria-labelledby="specs-tab">
+          <div class="table-responsive">
+            <table class="table table-striped specifications-table" id="specificationsTable">
+              <!-- Specifications will be added dynamically -->
+            </table>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="features" role="tabpanel" aria-labelledby="features-tab">
+          <div id="featuresContainer">
+            <!-- Features will be added dynamically -->
+          </div>
+        </div>
+        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+          <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+              <div class="reviews-summary">
+                <h4 class="mb-3">Customer Reviews</h4>
+                <div class="overall-rating mb-3">
+                  <div class="rating-number" id="overallRating">4.8</div>
+                  <div class="rating-stars" id="overallRatingStars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                  </div>
+                  <p class="text-muted" id="totalReviews">Based on 87 reviews</p>
+                </div>
+                <div class="rating-bars">
+                  <div class="rating-bar-item d-flex align-items-center mb-2">
+                    <span class="me-2">5</span>
+                    <i class="bi bi-star-fill me-2"></i>
+                    <div class="progress flex-grow-1 me-2">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>75%</span>
+                  </div>
+                  <div class="rating-bar-item d-flex align-items-center mb-2">
+                    <span class="me-2">4</span>
+                    <i class="bi bi-star-fill me-2"></i>
+                    <div class="progress flex-grow-1 me-2">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 18%" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>18%</span>
+                  </div>
+                  <div class="rating-bar-item d-flex align-items-center mb-2">
+                    <span class="me-2">3</span>
+                    <i class="bi bi-star-fill me-2"></i>
+                    <div class="progress flex-grow-1 me-2">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>5%</span>
+                  </div>
+                  <div class="rating-bar-item d-flex align-items-center mb-2">
+                    <span class="me-2">2</span>
+                    <i class="bi bi-star-fill me-2"></i>
+                    <div class="progress flex-grow-1 me-2">
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 2%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>2%</span>
+                  </div>
+                  <div class="rating-bar-item d-flex align-items-center">
+                    <span class="me-2">1</span>
+                    <i class="bi bi-star-fill me-2"></i>
+                    <div class="progress flex-grow-1 me-2">
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span>0%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="write-review mt-4">
+                <h5 class="mb-3">Write a Review</h5>
+                <button class="btn btn-primary" id="writeReviewBtn" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                  <i class="bi bi-pencil-square"></i> Write a Review
+                </button>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="reviews-list" id="reviewsList">
+                <!-- Reviews will be added dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+          <div class="shipping-info">
+            <h4 class="mb-4">Shipping Information</h4>
+            <div class="shipping-details mb-4">
+              <h5><i class="bi bi-truck me-2"></i>Delivery Options</h5>
+              <div class="row mt-3">
+                <div class="col-md-6 mb-3">
+                  <div class="delivery-option p-3 border rounded">
+                    <h6 class="mb-2">Standard Shipping</h6>
+                    <p class="mb-1">Delivery in 3-5 business days</p>
+                    <p class="mb-0 fw-bold">$5.99</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="delivery-option p-3 border rounded">
+                    <h6 class="mb-2">Express Shipping</h6>
+                    <p class="mb-1">Delivery in 1-2 business days</p>
+                    <p class="mb-0 fw-bold">$12.99</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="delivery-option p-3 border rounded">
+                    <h6 class="mb-2">Same Day Delivery</h6>
+                    <p class="mb-1">Available in select areas</p>
+                    <p class="mb-0 fw-bold">$19.99</p>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="delivery-option p-3 border rounded">
+                    <h6 class="mb-2">Free Store Pickup</h6>
+                    <p class="mb-1">Ready within 2 hours</p>
+                    <p class="mb-0 fw-bold">Free</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="returns-policy mb-4">
+              <h5><i class="bi bi-arrow-return-left me-2"></i>Returns Policy</h5>
+              <p class="mt-3">We offer a 30-day return policy for most items. To be eligible for a return, your item must be unused and in the same condition that you received it. It must also be in the original packaging.</p>
+              <p>Several types of goods are exempt from being returned. Perishable goods such as food, flowers, newspapers or magazines cannot be returned. We also do not accept products that are intimate or sanitary goods, hazardous materials, or flammable liquids or gases.</p>
+              <p>To complete your return, we require a receipt or proof of purchase. Please do not send your purchase back to the manufacturer.</p>
+            </div>
+            
+            <div class="warranty-info">
+              <h5><i class="bi bi-shield-check me-2"></i>Warranty Information</h5>
+              <p class="mt-3">This product comes with a standard manufacturer's warranty of 1 year, covering defects in materials and workmanship under normal use.</p>
+              <p>Extended warranty options are available for purchase:</p>
+              <ul>
+                <li>2-Year Extended Warranty: $29.99</li>
+                <li>3-Year Extended Warranty: $49.99</li>
+              </ul>
+              <p>The extended warranty covers:</p>
+              <ul>
+                <li>Free repairs or replacements</li>
+                <li>24/7 technical support</li>
+                <li>No additional costs for parts or labor</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section id="related-products" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">You May Also Like</h2>
+      <div class="row g-4" id="relatedProductsContainer">
+        <!-- Products will be loaded from JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">TechPulse</h5>
+          <p>Your one-stop destination for next-generation technology products and accessories.</p>
+          <div class="social-icons mt-3">
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Customer Service</h5>
+          <ul class="footer-links">
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="shipping.html">Shipping Policy</a></li>
+            <li><a href="returns.html">Returns & Refunds</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Contact Us</h5>
+          <ul class="footer-contact">
+            <li><i class="bi bi-geo-alt"></i> 123 Tech Street, Innovation City</li>
+            <li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li>
+            <li><i class="bi bi-envelope"></i> support@techpulse.com</li>
+            <li><i class="bi bi-clock"></i> Mon-Fri: 9AM - 6PM</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="mt-4">
+      <div class="row py-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <p class="mb-0">&copy; 2025 TechPulse. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="payment-methods">
+            <span class="payment-icon"><i class="bi bi-credit-card"></i></span>
+            <span class="payment-icon"><i class="bi bi-paypal"></i></span>
+            <span class="payment-icon"><i class="bi bi-wallet2"></i></span>
+            <span class="payment-icon"><i class="bi bi-bank"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" id="backToTop" class="back-to-top">
+    <i class="bi bi-arrow-up"></i>
+  </a>
+  
+  <!-- Notification Toast -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-info-circle me-2"></i>
+        <strong class="me-auto" id="toastTitle">Notification</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="toastMessage">
+        Item added to cart successfully!
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Modal -->
+  <div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Write a Review</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="reviewForm">
+            <div class="mb-3">
+              <label for="reviewRating" class="form-label">Rating</label>
+              <div class="rating-input">
+                <i class="bi bi-star rating-star" data-rating="1"></i>
+                <i class="bi bi-star rating-star" data-rating="2"></i>
+                <i class="bi bi-star rating-star" data-rating="3"></i>
+                <i class="bi bi-star rating-star" data-rating="4"></i>
+                <i class="bi bi-star rating-star" data-rating="5"></i>
+                <input type="hidden" id="reviewRating" name="rating" value="0">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="reviewTitle" class="form-label">Review Title</label>
+              <input type="text" class="form-control" id="reviewTitle" required>
+            </div>
+            <div class="mb-3">
+              <label for="reviewContent" class="form-label">Review</label>
+              <textarea class="form-control" id="reviewContent" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="reviewName" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="reviewName" required>
+            </div>
+            <div class="mb-3">
+              <label for="reviewEmail" class="form-label">Your Email</label>
+              <input type="email" class="form-control" id="reviewEmail" required>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="reviewConsent">
+              <label class="form-check-label" for="reviewConsent">
+                I agree to the privacy policy and give consent to publish my review.
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="submitReviewBtn">Submit Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/product-detail.js"></script>
+
+</body>
+</html>

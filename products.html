@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | TechPulse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-cpu"></i> TechPulse
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                Categories
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="products.html?category=smartphones">Smartphones</a></li>
+                <li><a class="dropdown-item" href="products.html?category=laptops">Laptops</a></li>
+                <li><a class="dropdown-item" href="products.html?category=tablets">Tablets</a></li>
+                <li><a class="dropdown-item" href="products.html?category=audio">Audio</a></li>
+                <li><a class="dropdown-item" href="products.html?category=wearables">Wearables</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="products.html">All Products</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center">
+            <div class="search-container me-3">
+              <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+              <button class="search-button">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <div class="theme-toggle me-3" id="themeToggle">
+              <i class="bi bi-moon-fill"></i>
+            </div>
+            <a href="wishlist.html" class="nav-icon me-3" title="Wishlist">
+              <i class="bi bi-heart"></i>
+              <span id="wishlistCount" class="count-badge">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon me-3" title="Cart">
+              <i class="bi bi-cart3"></i>
+              <span id="cartCount" class="count-badge">0</span>
+            </a>
+            <div class="user-menu">
+              <a href="#" id="userIcon" class="nav-icon" title="Account">
+                <i class="bi bi-person-circle"></i>
+              </a>
+              <div class="user-dropdown" id="userDropdown">
+                <div id="userAuthenticated" style="display: none;">
+                  <div class="user-info mb-2">
+                    <span id="userDisplayName">User</span>
+                  </div>
+                  <a href="account.html" class="dropdown-item">
+                    <i class="bi bi-person"></i> My Account
+                  </a>
+                  <a href="orders.html" class="dropdown-item">
+                    <i class="bi bi-box"></i> My Orders
+                  </a>
+                  <a href="#" id="logoutButton" class="dropdown-item">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                  </a>
+                </div>
+                <div id="userUnauthenticated">
+                  <a href="login.html" class="dropdown-item">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                  </a>
+                  <a href="signup.html" class="dropdown-item">
+                    <i class="bi bi-person-plus"></i> Sign Up
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Title -->
+  <section class="page-title py-5">
+    <div class="container">
+      <h1 id="categoryTitle">All Products</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page" id="breadcrumbCategory">Products</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Filters Sidebar -->
+        <div class="col-lg-3 mb-4">
+          <div class="filters-container p-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="mb-0">Filters</h4>
+              <button id="clearFilters" class="btn btn-sm btn-outline-secondary">Clear All</button>
+            </div>
+            
+            <!-- Categories -->
+            <div class="filter-group mb-3">
+              <h5 class="filter-title">Categories</h5>
+              <div class="filter-options">
+                <div class="form-check">
+                  <input class="form-check-input category-filter" type="checkbox" value="smartphones" id="categorySmartphones">
+                  <label class="form-check-label" for="categorySmartphones">
+                    Smartphones
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input category-filter" type="checkbox" value="laptops" id="categoryLaptops">
+                  <label class="form-check-label" for="categoryLaptops">
+                    Laptops
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input category-filter" type="checkbox" value="tablets" id="categoryTablets">
+                  <label class="form-check-label" for="categoryTablets">
+                    Tablets
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input category-filter" type="checkbox" value="audio" id="categoryAudio">
+                  <label class="form-check-label" for="categoryAudio">
+                    Audio
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input category-filter" type="checkbox" value="wearables" id="categoryWearables">
+                  <label class="form-check-label" for="categoryWearables">
+                    Wearables
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input category-filter" type="checkbox" value="accessories" id="categoryAccessories">
+                  <label class="form-check-label" for="categoryAccessories">
+                    Accessories
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Price Range -->
+            <div class="filter-group mb-3">
+              <h5 class="filter-title">Price Range</h5>
+              <div class="price-slider">
+                <input type="range" class="form-range" min="0" max="2000" step="100" id="minPriceRange">
+                <div class="price-inputs d-flex align-items-center mt-2">
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" id="minPrice" class="form-control" placeholder="Min" min="0">
+                  </div>
+                  <span class="mx-2">-</span>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" id="maxPrice" class="form-control" placeholder="Max">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Brands -->
+            <div class="filter-group mb-3">
+              <h5 class="filter-title">Brands</h5>
+              <div class="filter-options">
+                <div class="form-check">
+                  <input class="form-check-input brand-filter" type="checkbox" value="Apple" id="brandApple">
+                  <label class="form-check-label" for="brandApple">
+                    Apple
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input brand-filter" type="checkbox" value="Samsung" id="brandSamsung">
+                  <label class="form-check-label" for="brandSamsung">
+                    Samsung
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input brand-filter" type="checkbox" value="Sony" id="brandSony">
+                  <label class="form-check-label" for="brandSony">
+                    Sony
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input brand-filter" type="checkbox" value="Google" id="brandGoogle">
+                  <label class="form-check-label" for="brandGoogle">
+                    Google
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input brand-filter" type="checkbox" value="Dell" id="brandDell">
+                  <label class="form-check-label" for="brandDell">
+                    Dell
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input brand-filter" type="checkbox" value="Bose" id="brandBose">
+                  <label class="form-check-label" for="brandBose">
+                    Bose
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Ratings -->
+            <div class="filter-group mb-3">
+              <h5 class="filter-title">Ratings</h5>
+              <div class="filter-options">
+                <div class="form-check">
+                  <input class="form-check-input rating-filter" type="checkbox" value="4" id="rating4Plus">
+                  <label class="form-check-label" for="rating4Plus">
+                    <div class="stars-container">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                      <span class="ms-2">& Up</span>
+                    </div>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input rating-filter" type="checkbox" value="3" id="rating3Plus">
+                  <label class="form-check-label" for="rating3Plus">
+                    <div class="stars-container">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                      <span class="ms-2">& Up</span>
+                    </div>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input rating-filter" type="checkbox" value="2" id="rating2Plus">
+                  <label class="form-check-label" for="rating2Plus">
+                    <div class="stars-container">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                      <span class="ms-2">& Up</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Availability -->
+            <div class="filter-group">
+              <h5 class="filter-title">Availability</h5>
+              <div class="filter-options">
+                <div class="form-check">
+                  <input class="form-check-input availability-filter" type="checkbox" value="inStock" id="availabilityInStock">
+                  <label class="form-check-label" for="availabilityInStock">
+                    In Stock
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input availability-filter" type="checkbox" value="outOfStock" id="availabilityOutOfStock">
+                  <label class="form-check-label" for="availabilityOutOfStock">
+                    Out of Stock
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="col-lg-9">
+          <div class="products-header d-flex justify-content-between align-items-center mb-4">
+            <div class="results-count" id="resultsCount">
+              Showing <span id="productsShown">0</span> of <span id="totalProducts">0</span> products
+            </div>
+            <div class="products-sorting d-flex align-items-center">
+              <label for="sortOptions" class="me-2">Sort by:</label>
+              <select id="sortOptions" class="form-select">
+                <option value="featured">Featured</option>
+                <option value="newest">Newest</option>
+                <option value="priceLow">Price: Low to High</option>
+                <option value="priceHigh">Price: High to Low</option>
+                <option value="bestSelling">Best Selling</option>
+                <option value="topRated">Top Rated</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="view-options mb-4">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-outline-secondary active" id="gridViewBtn">
+                <i class="bi bi-grid-3x3-gap-fill"></i>
+              </button>
+              <button type="button" class="btn btn-outline-secondary" id="listViewBtn">
+                <i class="bi bi-list"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="row g-4" id="productsContainer">
+            <!-- Products will be loaded from JavaScript -->
+          </div>
+          
+          <!-- Pagination -->
+          <nav aria-label="Products pagination" class="my-5">
+            <ul class="pagination justify-content-center" id="pagination">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recently Viewed -->
+  <section id="recently-viewed" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Recently Viewed</h2>
+      <div class="row g-4" id="recentlyViewedContainer">
+        <!-- Products will be loaded from JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">TechPulse</h5>
+          <p>Your one-stop destination for next-generation technology products and accessories.</p>
+          <div class="social-icons mt-3">
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Customer Service</h5>
+          <ul class="footer-links">
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="shipping.html">Shipping Policy</a></li>
+            <li><a href="returns.html">Returns & Refunds</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Contact Us</h5>
+          <ul class="footer-contact">
+            <li><i class="bi bi-geo-alt"></i> 123 Tech Street, Innovation City</li>
+            <li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li>
+            <li><i class="bi bi-envelope"></i> support@techpulse.com</li>
+            <li><i class="bi bi-clock"></i> Mon-Fri: 9AM - 6PM</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="mt-4">
+      <div class="row py-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <p class="mb-0">&copy; 2025 TechPulse. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="payment-methods">
+            <span class="payment-icon"><i class="bi bi-credit-card"></i></span>
+            <span class="payment-icon"><i class="bi bi-paypal"></i></span>
+            <span class="payment-icon"><i class="bi bi-wallet2"></i></span>
+            <span class="payment-icon"><i class="bi bi-bank"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" id="backToTop" class="back-to-top">
+    <i class="bi bi-arrow-up"></i>
+  </a>
+  
+  <!-- Notification Toast -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-info-circle me-2"></i>
+        <strong class="me-auto" id="toastTitle">Notification</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="toastMessage">
+        Item added to cart successfully!
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="quickViewTitle">Product Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img id="quickViewImage" src="" alt="Product" class="img-fluid quick-view-image">
+            </div>
+            <div class="col-md-6">
+              <div id="quickViewRating" class="product-rating mb-2">
+                <!-- Rating stars will be added dynamically -->
+              </div>
+              <div id="quickViewPrice" class="price-container mb-3">
+                <!-- Price will be added dynamically -->
+              </div>
+              <div id="quickViewAvailability" class="mb-3">
+                <!-- Availability will be added dynamically -->
+              </div>
+              <p id="quickViewDescription" class="mb-4">
+                <!-- Description will be added dynamically -->
+              </p>
+              <div class="quantity-selector d-flex align-items-center mb-4">
+                <label for="quickViewQuantity" class="me-3">Quantity:</label>
+                <div class="input-group" style="width: 130px;">
+                  <button class="btn btn-outline-secondary quantity-btn" type="button" id="quickViewDecreaseBtn">-</button>
+                  <input type="number" id="quickViewQuantity" class="form-control text-center" value="1" min="1">
+                  <button class="btn btn-outline-secondary quantity-btn" type="button" id="quickViewIncreaseBtn">+</button>
+                </div>
+              </div>
+              <div class="d-grid gap-2">
+                <button id="quickViewAddToCart" class="btn btn-primary">
+                  <i class="bi bi-cart-plus"></i> Add to Cart
+                </button>
+                <button id="quickViewAddToWishlist" class="btn btn-outline-secondary">
+                  <i class="bi bi-heart"></i> Add to Wishlist
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a id="quickViewDetailsLink" href="#" class="btn btn-outline-primary">View Full Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/products.js"></script>
+
+</body>
+</html>

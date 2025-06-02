@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | TechPulse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-cpu"></i> TechPulse
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Categories
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="products.html?category=smartphones">Smartphones</a></li>
+                <li><a class="dropdown-item" href="products.html?category=laptops">Laptops</a></li>
+                <li><a class="dropdown-item" href="products.html?category=tablets">Tablets</a></li>
+                <li><a class="dropdown-item" href="products.html?category=audio">Audio</a></li>
+                <li><a class="dropdown-item" href="products.html?category=wearables">Wearables</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="products.html">All Products</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center">
+            <div class="search-container me-3">
+              <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+              <button class="search-button">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <div class="theme-toggle me-3" id="themeToggle">
+              <i class="bi bi-moon-fill"></i>
+            </div>
+            <a href="wishlist.html" class="nav-icon me-3" title="Wishlist">
+              <i class="bi bi-heart"></i>
+              <span id="wishlistCount" class="count-badge">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon me-3 active" title="Cart">
+              <i class="bi bi-cart3"></i>
+              <span id="cartCount" class="count-badge">0</span>
+            </a>
+            <div class="user-menu">
+              <a href="#" id="userIcon" class="nav-icon" title="Account">
+                <i class="bi bi-person-circle"></i>
+              </a>
+              <div class="user-dropdown" id="userDropdown">
+                <div id="userAuthenticated" style="display: none;">
+                  <div class="user-info mb-2">
+                    <span id="userDisplayName">User</span>
+                  </div>
+                  <a href="account.html" class="dropdown-item">
+                    <i class="bi bi-person"></i> My Account
+                  </a>
+                  <a href="orders.html" class="dropdown-item">
+                    <i class="bi bi-box"></i> My Orders
+                  </a>
+                  <a href="#" id="logoutButton" class="dropdown-item">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                  </a>
+                </div>
+                <div id="userUnauthenticated">
+                  <a href="login.html" class="dropdown-item">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                  </a>
+                  <a href="signup.html" class="dropdown-item">
+                    <i class="bi bi-person-plus"></i> Sign Up
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Title -->
+  <section class="page-title py-5">
+    <div class="container">
+      <h1>Shopping Cart</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Cart</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <section class="cart-section py-5">
+    <div class="container">
+      <div id="cartEmptyState" class="text-center py-5" style="display: none;">
+        <div class="empty-cart-icon mb-4">
+          <i class="bi bi-cart-x display-1"></i>
+        </div>
+        <h3 class="mb-4">Your cart is empty</h3>
+        <p class="mb-4">Looks like you haven't added any products to your cart yet.</p>
+        <a href="products.html" class="btn btn-primary">
+          <i class="bi bi-basket"></i> Continue Shopping
+        </a>
+      </div>
+
+      <div id="cartContent">
+        <div class="row">
+          <div class="col-lg-8 mb-4 mb-lg-0">
+            <div class="cart-items-container">
+              <div class="cart-header d-flex justify-content-between p-3 bg-light">
+                <div class="d-flex align-items-center">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="selectAllItems">
+                    <label class="form-check-label" for="selectAllItems">
+                      Select All
+                    </label>
+                  </div>
+                </div>
+                <button id="removeSelectedBtn" class="btn btn-sm btn-outline-danger">
+                  <i class="bi bi-trash"></i> Remove Selected
+                </button>
+              </div>
+              
+              <div id="cartItemsList">
+                <!-- Cart items will be dynamically loaded here -->
+              </div>
+            </div>
+            
+            <div class="cart-actions mt-4 d-flex justify-content-between">
+              <a href="products.html" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> Continue Shopping
+              </a>
+              <button id="clearCartBtn" class="btn btn-outline-danger">
+                <i class="bi bi-trash"></i> Clear Cart
+              </button>
+            </div>
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="cart-summary p-4 border rounded">
+              <h3 class="mb-4">Order Summary</h3>
+              
+              <div class="summary-item d-flex justify-content-between mb-3">
+                <span>Subtotal (<span id="itemCount">0</span> items)</span>
+                <span id="subtotal">$0.00</span>
+              </div>
+              
+              <div class="summary-item d-flex justify-content-between mb-3">
+                <span>Shipping</span>
+                <span id="shipping">$0.00</span>
+              </div>
+              
+              <div class="summary-item d-flex justify-content-between mb-3" id="discountRow" style="display: none;">
+                <span>Discount</span>
+                <span id="discount">-$0.00</span>
+              </div>
+              
+              <div class="summary-item d-flex justify-content-between mb-3">
+                <span>Tax</span>
+                <span id="tax">$0.00</span>
+              </div>
+              
+              <hr class="my-3">
+              
+              <div class="summary-total d-flex justify-content-between mb-4">
+                <span class="fw-bold">Total</span>
+                <span class="fw-bold" id="total">$0.00</span>
+              </div>
+              
+              <div class="promo-code mb-4">
+                <label for="promoInput" class="form-label">Promo Code</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="promoInput" placeholder="Enter code">
+                  <button class="btn btn-outline-secondary" type="button" id="applyPromoBtn">Apply</button>
+                </div>
+                <div id="promoMessage" class="form-text text-success mt-2" style="display: none;"></div>
+              </div>
+              
+              <div class="checkout-actions">
+                <a href="checkout.html" class="btn btn-primary w-100 mb-3" id="checkoutBtn">
+                  <i class="bi bi-credit-card"></i> Proceed to Checkout
+                </a>
+                <div class="checkout-options">
+                  <button class="btn btn-outline-secondary w-100 mb-2">
+                    <i class="bi bi-paypal"></i> Checkout with PayPal
+                  </button>
+                  <button class="btn btn-outline-secondary w-100">
+                    <i class="bi bi-wallet2"></i> Pay with Digital Wallet
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="secure-checkout mt-4 p-3 border rounded">
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-shield-lock me-2 text-success"></i>
+                <h5 class="mb-0">Secure Checkout</h5>
+              </div>
+              <p class="mb-3 small">We use encrypted SSL security to ensure that your credit card information is 100% protected.</p>
+              <div class="payment-icons d-flex flex-wrap">
+                <span class="payment-icon"><i class="bi bi-credit-card"></i></span>
+                <span class="payment-icon"><i class="bi bi-paypal"></i></span>
+                <span class="payment-icon"><i class="bi bi-wallet2"></i></span>
+                <span class="payment-icon"><i class="bi bi-bank"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- You May Also Like -->
+  <section id="recommended-products" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">You May Also Like</h2>
+      <div class="row g-4" id="recommendedProductsContainer">
+        <!-- Products will be loaded from JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">TechPulse</h5>
+          <p>Your one-stop destination for next-generation technology products and accessories.</p>
+          <div class="social-icons mt-3">
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Customer Service</h5>
+          <ul class="footer-links">
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="shipping.html">Shipping Policy</a></li>
+            <li><a href="returns.html">Returns & Refunds</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Contact Us</h5>
+          <ul class="footer-contact">
+            <li><i class="bi bi-geo-alt"></i> 123 Tech Street, Innovation City</li>
+            <li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li>
+            <li><i class="bi bi-envelope"></i> support@techpulse.com</li>
+            <li><i class="bi bi-clock"></i> Mon-Fri: 9AM - 6PM</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="mt-4">
+      <div class="row py-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <p class="mb-0">&copy; 2025 TechPulse. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="payment-methods">
+            <span class="payment-icon"><i class="bi bi-credit-card"></i></span>
+            <span class="payment-icon"><i class="bi bi-paypal"></i></span>
+            <span class="payment-icon"><i class="bi bi-wallet2"></i></span>
+            <span class="payment-icon"><i class="bi bi-bank"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" id="backToTop" class="back-to-top">
+    <i class="bi bi-arrow-up"></i>
+  </a>
+  
+  <!-- Notification Toast -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-info-circle me-2"></i>
+        <strong class="me-auto" id="toastTitle">Notification</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="toastMessage">
+        Item added to cart successfully!
+      </div>
+    </div>
+  </div>
+
+  <!-- Clear Cart Confirmation Modal -->
+  <div class="modal fade" id="clearCartModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Clear Shopping Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to remove all items from your cart?</p>
+          <p>This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmClearCartBtn">Yes, Clear Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Remove Selected Items Modal -->
+  <div class="modal fade" id="removeSelectedModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Remove Selected Items</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to remove the selected items from your cart?</p>
+          <p>This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmRemoveSelectedBtn">Yes, Remove Items</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/cart-page.js"></script>
+
+</body>
+</html>

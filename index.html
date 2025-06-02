@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechPulse | Next-Gen Tech Shopping</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-cpu"></i> TechPulse
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Categories
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="products.html?category=smartphones">Smartphones</a></li>
+                <li><a class="dropdown-item" href="products.html?category=laptops">Laptops</a></li>
+                <li><a class="dropdown-item" href="products.html?category=tablets">Tablets</a></li>
+                <li><a class="dropdown-item" href="products.html?category=audio">Audio</a></li>
+                <li><a class="dropdown-item" href="products.html?category=wearables">Wearables</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="products.html">All Products</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center">
+            <div class="search-container me-3">
+              <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+              <button class="search-button">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <div class="theme-toggle me-3" id="themeToggle">
+              <i class="bi bi-moon-fill"></i>
+            </div>
+            <a href="wishlist.html" class="nav-icon me-3" title="Wishlist">
+              <i class="bi bi-heart"></i>
+              <span id="wishlistCount" class="count-badge">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon me-3" title="Cart">
+              <i class="bi bi-cart3"></i>
+              <span id="cartCount" class="count-badge">0</span>
+            </a>
+            <div class="user-menu">
+              <a href="#" id="userIcon" class="nav-icon" title="Account">
+                <i class="bi bi-person-circle"></i>
+              </a>
+              <div class="user-dropdown" id="userDropdown">
+                <div id="userAuthenticated" style="display: none;">
+                  <div class="user-info mb-2">
+                    <span id="userDisplayName">User</span>
+                  </div>
+                  <a href="account.html" class="dropdown-item">
+                    <i class="bi bi-person"></i> My Account
+                  </a>
+                  <a href="orders.html" class="dropdown-item">
+                    <i class="bi bi-box"></i> My Orders
+                  </a>
+                  <a href="#" id="logoutButton" class="dropdown-item">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                  </a>
+                </div>
+                <div id="userUnauthenticated">
+                  <a href="login.html" class="dropdown-item">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                  </a>
+                  <a href="signup.html" class="dropdown-item">
+                    <i class="bi bi-person-plus"></i> Sign Up
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-text-container">
+          <h1 class="display-4 fw-bold mb-4">Next-Gen Tech at Your Fingertips</h1>
+          <p class="lead mb-4">Discover the latest innovations in technology with exclusive deals on premium gadgets.</p>
+          <div class="d-flex gap-3">
+            <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
+            <a href="#featured-products" class="btn btn-outline-light btn-lg">Explore</a>
+          </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block hero-image-container">
+          <img src="https://images.pexels.com/photos/1337753/pexels-photo-1337753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Latest Tech Gadgets" class="img-fluid hero-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section id="categories" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Shop by Category</h2>
+      <div class="row g-4">
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="products.html?category=smartphones" class="category-card">
+            <div class="category-icon">
+              <i class="bi bi-phone"></i>
+            </div>
+            <h5>Smartphones</h5>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="products.html?category=laptops" class="category-card">
+            <div class="category-icon">
+              <i class="bi bi-laptop"></i>
+            </div>
+            <h5>Laptops</h5>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="products.html?category=tablets" class="category-card">
+            <div class="category-icon">
+              <i class="bi bi-tablet"></i>
+            </div>
+            <h5>Tablets</h5>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="products.html?category=audio" class="category-card">
+            <div class="category-icon">
+              <i class="bi bi-headphones"></i>
+            </div>
+            <h5>Audio</h5>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="products.html?category=wearables" class="category-card">
+            <div class="category-icon">
+              <i class="bi bi-smartwatch"></i>
+            </div>
+            <h5>Wearables</h5>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="products.html?category=accessories" class="category-card">
+            <div class="category-icon">
+              <i class="bi bi-mouse"></i>
+            </div>
+            <h5>Accessories</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section id="featured-products" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Featured Products</h2>
+      <div class="row g-4" id="featuredProductsContainer">
+        <!-- Products will be loaded from JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals -->
+  <section id="new-arrivals" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">New Arrivals</h2>
+      <div class="row g-4" id="newArrivalsContainer">
+        <!-- Products will be loaded from JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Deal of the Day -->
+  <section id="deal-of-day" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Deal of the Day</h2>
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="deal-image-container">
+            <img id="dealImage" src="https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Deal of the Day" class="img-fluid deal-image">
+            <div class="deal-tag">SAVE 30%</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="deal-content p-4">
+            <h3 id="dealTitle">Premium Wireless Earbuds</h3>
+            <div class="product-rating mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+              <span class="ms-2">4.5 (120 reviews)</span>
+            </div>
+            <p id="dealDescription" class="mb-3">Experience crystal-clear audio with our premium wireless earbuds featuring active noise cancellation and 24-hour battery life.</p>
+            <div class="price-container mb-3">
+              <span class="original-price">$199.99</span>
+              <span class="current-price">$139.99</span>
+            </div>
+            <div class="countdown-container mb-4">
+              <p class="mb-2">Offer ends in:</p>
+              <div class="countdown" id="dealCountdown">
+                <div class="countdown-item">
+                  <span id="hours">12</span>
+                  <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                  <span id="minutes">30</span>
+                  <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                  <span id="seconds">45</span>
+                  <span class="countdown-label">Seconds</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-lg add-to-cart-btn" data-id="deal1">
+              <i class="bi bi-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">What Our Customers Say</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card">
+            <div class="testimonial-rating mb-3">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="testimonial-text">"TechPulse has become my go-to store for all tech needs. Their customer service is exceptional, and the product quality is unmatched."</p>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="John Smith" class="testimonial-avatar">
+              <div>
+                <h5 class="mb-0">John Smith</h5>
+                <small>Verified Buyer</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card">
+            <div class="testimonial-rating mb-3">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+            </div>
+            <p class="testimonial-text">"Fast shipping and the prices are competitive. I love how they describe products in detail and the checkout process is seamless."</p>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sarah Johnson" class="testimonial-avatar">
+              <div>
+                <h5 class="mb-0">Sarah Johnson</h5>
+                <small>Verified Buyer</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="testimonial-card">
+            <div class="testimonial-rating mb-3">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="testimonial-text">"The product recommendations are spot on! I bought a laptop based on their suggestion and couldn't be happier with my purchase."</p>
+            <div class="testimonial-author">
+              <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Mike Chen" class="testimonial-avatar">
+              <div>
+                <h5 class="mb-0">Mike Chen</h5>
+                <small>Verified Buyer</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter" class="py-5 bg-primary text-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h3 class="mb-4">Subscribe to Our Newsletter</h3>
+          <p class="mb-4">Stay updated with our latest products, exclusive offers, and tech news.</p>
+          <form id="newsletterForm" class="newsletter-form">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Enter your email address" required>
+              <button class="btn btn-light" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">TechPulse</h5>
+          <p>Your one-stop destination for next-generation technology products and accessories.</p>
+          <div class="social-icons mt-3">
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Customer Service</h5>
+          <ul class="footer-links">
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="shipping.html">Shipping Policy</a></li>
+            <li><a href="returns.html">Returns & Refunds</a></li>
+            <li><a href="terms.html">Terms & Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5 class="footer-title mb-4">Contact Us</h5>
+          <ul class="footer-contact">
+            <li><i class="bi bi-geo-alt"></i> 123 Tech Street, Innovation City</li>
+            <li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li>
+            <li><i class="bi bi-envelope"></i> support@techpulse.com</li>
+            <li><i class="bi bi-clock"></i> Mon-Fri: 9AM - 6PM</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="mt-4">
+      <div class="row py-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <p class="mb-0">&copy; 2025 TechPulse. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="payment-methods">
+            <span class="payment-icon"><i class="bi bi-credit-card"></i></span>
+            <span class="payment-icon"><i class="bi bi-paypal"></i></span>
+            <span class="payment-icon"><i class="bi bi-wallet2"></i></span>
+            <span class="payment-icon"><i class="bi bi-bank"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" id="backToTop" class="back-to-top">
+    <i class="bi bi-arrow-up"></i>
+  </a>
+  
+  <!-- Notification Toast -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-info-circle me-2"></i>
+        <strong class="me-auto" id="toastTitle">Notification</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="toastMessage">
+        Item added to cart successfully!
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
