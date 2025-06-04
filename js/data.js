@@ -20,6 +20,7 @@ const products = [
     stock: 15,
     isNew: true,
     isBestSeller: true,
+    isFeatured: true,
     variants: [
       { name: '256GB', price: 1199.99 },
       { name: '512GB', price: 1399.99 },
@@ -449,7 +450,7 @@ const products = [
   },
   {
     id: 'p11',
-    title: 'Sony PlayStation 5 Pro',
+    title:  'Sony PlayStation 5 Pro',
     category: 'gaming',
     brand: 'Sony',
     price: 699.99,
@@ -577,4 +578,201 @@ const reviews = [
     },
     rating: 5,
     title: 'The camera is unbelievable',
-    content: 'As a photography enthusiast, I'm absolutely blown away by the camera capabilities of the iPhone 15 Pro Max. The 48MP main camera captures incredible detail, and the 5x telephoto lens is a game-changer for me. Portrait mode has also improved
+    content: 'As a photography enthusiast, I\'m absolutely blown away by the camera capabilities of the iPhone 15 Pro Max. The 48MP main camera captures incredible detail, and the 5x telephoto lens is a game-changer for me. Portrait mode has also improved significantly, with better edge detection and more natural bokeh.',
+    date: '2023-10-20',
+    helpful: 31,
+    verified: true
+  },
+  {
+    id: 'r4',
+    productId: 'p3',
+    user: {
+      name: 'David Wilson',
+      avatar: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    rating: 5,
+    title: 'A powerhouse for creative professionals',
+    content: 'The MacBook Pro with M3 Max is simply the best laptop I\'ve ever used. As a video editor, the performance is mind-blowing - I can edit 4K ProRes footage without any lag or dropped frames. The battery life is exceptional, and the display is stunning for color grading. Worth every penny for professional work.',
+    date: '2023-12-05',
+    helpful: 42,
+    verified: true
+  },
+  {
+    id: 'r5',
+    productId: 'p3',
+    user: {
+      name: 'Sophia Martinez',
+      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    rating: 4,
+    title: 'Almost perfect, but has some limitations',
+    content: 'The M3 Max MacBook Pro is incredibly fast and efficient. I\'m a software developer, and compile times are dramatically reduced. The screen is gorgeous, and the keyboard is comfortable for long coding sessions. My only complaint is the limited port selection - I still need to carry a dongle for some of my peripherals.',
+    date: '2023-11-28',
+    helpful: 15,
+    verified: true
+  },
+  {
+    id: 'r6',
+    productId: 'p4',
+    user: {
+      name: 'Alex Thompson',
+      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    rating: 5,
+    title: 'Noise cancellation is in another league',
+    content: 'The Sony WH-1000XM5 headphones have absolutely incredible noise cancellation. I use them daily on my commute and in the office, and they block out nearly everything. The sound quality is excellent with deep bass and clear highs. The multipoint connection is also super convenient for switching between my laptop and phone.',
+    date: '2023-10-15',
+    helpful: 28,
+    verified: true
+  },
+  {
+    id: 'r7',
+    productId: 'p8',
+    user: {
+      name: 'Ryan Park',
+      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    rating: 5,
+    title: 'The ultimate watch for outdoor enthusiasts',
+    content: 'As someone who regularly hikes and trail runs, the Apple Watch Ultra 2 has been a game-changer. The battery life is excellent, lasting through multi-day adventures. The dual-frequency GPS is noticeably more accurate than my previous watch, especially in canyons and dense forests. The bright display is perfectly visible even in direct sunlight.',
+    date: '2023-12-10',
+    helpful: 19,
+    verified: true
+  },
+  {
+    id: 'r8',
+    productId: 'p8',
+    user: {
+      name: 'Jennifer Lewis',
+      avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    },
+    rating: 4,
+    title: 'Great watch, but a bit bulky for smaller wrists',
+    content: 'The Apple Watch Ultra 2 is incredibly capable and the titanium construction feels premium. I love the Action button for quick access to workouts. The battery life is impressive compared to regular Apple Watches. My only complaint is the size - it\'s quite large on my smaller wrist, and I wish Apple made a slightly smaller version with the same features.',
+    date: '2023-11-05',
+    helpful: 22,
+    verified: true
+  }
+];
+
+// Featured collections for homepage
+const featuredCollections = [
+  {
+    id: 'fc1',
+    title: 'Holiday Gift Guide',
+    image: 'https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Find the perfect tech gifts for everyone on your list.',
+    link: 'products.html?collection=holiday'
+  },
+  {
+    id: 'fc2',
+    title: 'Student Essentials',
+    image: 'https://images.pexels.com/photos/8636602/pexels-photo-8636602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Tech must-haves for the new semester.',
+    link: 'products.html?collection=student'
+  },
+  {
+    id: 'fc3',
+    title: 'Work From Home Setup',
+    image: 'https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'Upgrade your home office with these productivity boosters.',
+    link: 'products.html?collection=wfh'
+  }
+];
+
+// Promotional offers for banners
+const promotions = [
+  {
+    id: 'promo1',
+    title: 'Summer Tech Sale',
+    subtitle: 'Up to 40% off select electronics',
+    description: 'Limited time offer on the latest gadgets. Hurry before they\'re gone!',
+    image: 'https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    backgroundColor: '#0066cc',
+    textColor: '#ffffff',
+    buttonText: 'Shop Now',
+    buttonLink: 'products.html?sale=summer',
+    validUntil: '2025-07-31'
+  },
+  {
+    id: 'promo2',
+    title: 'Black Friday Preview',
+    subtitle: 'Early access to our biggest deals',
+    description: 'Get a head start on Black Friday with exclusive early bird offers on top brands.',
+    image: 'https://images.pexels.com/photos/5650026/pexels-photo-5650026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    backgroundColor: '#212529',
+    textColor: '#ffffff',
+    buttonText: 'View Deals',
+    buttonLink: 'products.html?sale=blackfriday',
+    validUntil: '2025-11-26'
+  },
+  {
+    id: 'promo3',
+    title: 'Apple Ecosystem Sale',
+    subtitle: 'Save on your favorite Apple products',
+    description: 'Special bundle deals when you purchase multiple Apple devices.',
+    image: 'https://images.pexels.com/photos/7974/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    backgroundColor: '#f5f5f7',
+    textColor: '#1d1d1f',
+    buttonText: 'Explore Bundles',
+    buttonLink: 'products.html?brand=apple&bundle=true',
+    validUntil: '2025-08-15'
+  }
+];
+
+// Flash deals for limited-time offers
+const flashDeals = [
+  {
+    id: 'flash1',
+    productId: 'p1',
+    discountPercentage: 15,
+    endTime: new Date('2025-07-10T23:59:59').getTime()
+  },
+  {
+    id: 'flash2',
+    productId: 'p4',
+    discountPercentage: 25,
+    endTime: new Date('2025-07-05T23:59:59').getTime()
+  },
+  {
+    id: 'flash3',
+    productId: 'p9',
+    discountPercentage: 20,
+    endTime: new Date('2025-07-08T23:59:59').getTime()
+  }
+];
+
+// Coupon codes
+const coupons = [
+  {
+    code: 'SUMMER25',
+    discountPercentage: 25,
+    minPurchase: 100,
+    validUntil: new Date('2025-08-31').getTime(),
+    description: '25% off on purchases above $100'
+  },
+  {
+    code: 'NEWUSER10',
+    discountPercentage: 10,
+    minPurchase: 50,
+    validUntil: new Date('2025-12-31').getTime(),
+    description: '10% off on your first purchase above $50'
+  },
+  {
+    code: 'FREESHIP',
+    freeShipping: true,
+    minPurchase: 75,
+    validUntil: new Date('2025-12-31').getTime(),
+    description: 'Free shipping on orders above $75'
+  }
+];
+
+// Export all data for use in other files
+const data = {
+  products,
+  reviews,
+  featuredCollections,
+  promotions,
+  flashDeals,
+  coupons
+};
